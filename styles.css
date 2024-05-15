@@ -1,0 +1,351 @@
+@import url('https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --green-hsl: 157, 74%, 62%;
+    --green: hsl(var(--green-hsl));
+
+    --dark-blue: hsl(224, 35%, 11%);
+    --medium-blue: hsl(225, 26%, 23%);
+    --light-blue: hsl(225, 21%, 45%);
+    --very-light-blue: hsl(225, 40%, 83%);
+
+    --ff-main: "Chivo", sans-serif;
+    --fw-bold: 700;
+    --fw-semi-bold: 600;
+    --fw-reg: 400;
+    --fw-light: 100;
+
+    --gap: 2rem;
+}
+
+@media only screen and (min-width: 850px) {
+    :root {
+        --gap: 1.5rem;
+    }
+}
+
+/* CSS Reset: https://piccalil.li/blog/a-modern-css-reset/ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+body {
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  min-height: 100vh;
+
+  font-family: var(--ff-main);
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+img,
+picture {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 
+================
+Main CSS
+================
+*/
+
+body {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    background-image: url("assets/tablet/image-host.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+}
+
+@media only screen and (min-width: 850px) {
+    body {
+        background-image: unset;
+        justify-content: unset;
+
+        background-color: var(--dark-blue);
+    }
+}
+
+.overlay {
+    position: absolute;
+    z-index: -1;
+
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--dark-blue);
+    opacity: 90%;
+}
+
+@media only screen and (min-width: 850px) {
+    .overlay {
+        height: unset;
+        width: unset;
+        opacity: unset;
+        background-color: unset;
+
+        background-image: url("assets/tablet/image-host.jpg");
+        background-repeat: no-repeat;
+        background-size: 100%;
+        top: 0;
+        right: 0;
+        min-height: 80%;
+        min-width: 50%;
+    }
+}
+
+@media only screen and (min-width: 1090px) {
+    .overlay {
+        background-image: url("assets/desktop/image-host.jpg");
+        top: 15%;
+    }
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    padding-top: var(--gap);
+}
+
+@media only screen and (min-width: 850px) {
+    header {
+        justify-content: unset;
+        padding-top: unset;
+
+        margin-top: 5%;
+        margin-left: 5%;
+    }
+}
+
+@media only screen and (min-width: 1090px) {
+    header {
+        margin-left: 10%;
+    }
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+    text-align: center;
+    margin: 0 1.2rem;
+}
+
+@media only screen and (min-width: 500px) {
+    .container {
+        max-width: 70%;
+        margin: 0 auto;
+    }
+}
+
+.heading__h1 {
+    color: var(--green);
+    font-weight: var(--fw-light);
+    text-transform: uppercase;
+    margin-bottom: calc(var(--gap) - 1rem);
+}
+
+.heading__h1 span {
+    color: #fff;
+}
+
+.heading__sub {
+    color: var(--light-blue);
+    font-weight: var(--fw-light);
+}
+
+.container__companies {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.container__companies img {
+    max-width: 20%;
+}
+
+.request__form {
+    position: relative;
+}
+
+.form__email,
+.form__submit {
+    min-width: 100%;
+    min-height: 2.5rem;
+    font-size: .9rem;
+    font-weight: var(--fw-semi-bold);
+    border: none;
+    border-radius: 2rem;
+}
+
+.form__email {
+    background-color: var(--medium-blue);
+    color: var(--very-light-blue);
+    padding-left: 2rem;
+    margin-bottom: calc(var(--gap) - 1rem);
+}
+
+.form__email:invalid ~ .form__email-error {
+    display: block;
+}
+
+.form__email-error {
+    display: none;
+    position: absolute;
+    top: 90%;
+    left: 6%;
+    color: #FB3E3E;
+    font-size: .7rem;
+}
+
+.form__submit {
+    color: var(--dark-blue);
+    background-color: var(--green);
+}
+
+.form__submit:hover {
+    cursor: pointer;
+    background-color: hsl(var(--green-hsl), 50%);
+}
+
+.dots {
+    display: none;
+}
+
+@media only screen and (min-width: 850px) {
+    body {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .container {
+        text-align: unset;
+        margin: unset;
+
+        display: grid;
+        grid-template-areas: 
+        "header"
+        "form"
+        "companies";
+
+        background-color: var(--dark-blue);
+        max-width: 85%;
+        margin-top: 8.2%;
+        margin-left: 5%;
+        padding-top: 2rem;
+    }
+
+    .container__heading {
+        grid-area: header;
+    }
+
+    .heading__h1 {
+        font-size: 3rem;
+        line-height: 4rem;
+    }
+
+    .heading__sub {
+        max-width: 50ch;
+    }
+
+    .container__companies {
+        grid-area: companies;
+        justify-content: unset;
+    }
+
+    .request__form {
+        grid-area: form;
+        position: relative;
+        max-width: 50%;
+    }
+
+    .form__submit {
+        position: absolute;
+        top: 8%;
+        right: 1%;
+        min-height: calc(100% - 1rem);
+        min-width: 1rem;
+        padding: 0 1.2rem;
+    }
+
+    .dots {
+        position: absolute;
+        display: block;
+        bottom: -5%;
+        left: 3%;
+    }
+}
+
+@media only screen and (min-width: 1090px) {
+    .container {
+        max-width: 60%;
+        margin-top: 8%;
+        margin-left: 10%;
+    }
+
+    .heading__h1 {
+        max-width: 22ch;
+    }
+
+    .dots {
+        bottom: 10%;
+        right: 0;
+        left: unset;
+    }
+}
+
+@media only screen and (min-width: 1385px) {
+    .container {
+        margin-top: 9.2%;
+    }
+
+    .dots {
+        bottom: 5%;
+    }
+}
+
+@media only screen and (min-width: 1465px) {
+    .container {
+        margin-top: 11%;
+    }
+}
